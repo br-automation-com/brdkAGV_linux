@@ -5,9 +5,10 @@ This repository requires Ubuntu 20.04 with git installed
 
 ### Clone repository to home folder
     git clone https://github.com/br-automation-com/brdkAGV_linux.git
-
+    cd brdkAGV_linux
+    
 ### Run the ros2_installation.sh script
-    sudo ros2_installation.sh
+    sudo ./ros2_installation.sh
 
 Guide can be found here: https://docs.ros.org/en/galactic/Installation/Ubuntu-Install-Debians.html
 
