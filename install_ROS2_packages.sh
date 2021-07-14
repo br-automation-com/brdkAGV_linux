@@ -1,3 +1,4 @@
+#!/bin/bash
 cd ros_ws/src/
 
 # will either pull if the folder exist or clone it
