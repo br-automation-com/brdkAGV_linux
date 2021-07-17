@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<launch>
+
+    <arg name="max_speed" default="2.0"/>
+    <arg name="min_speed" default="-2.0"/>
+    <arg name="ticks_per_meter" default="105860"/>
+    <arg name="base_width" default="0.35"/>
+	<arg name="run_diag" default="true"/>
+	<arg name="host" default="192.168.87.230:4840"/>
+    <arg name="vel_topic" default="cmd_vel"/>
+    
+	<arg name="namespace" default="opcua"/>
+    <arg name="node_name" default="opcua_client"/>
+	
+    <node ns="$(arg namespace)" name="$(arg node_name)" pkg="ros_opcua_impl_freeopcua" type="client_node" output="screen">
+    </node>
+
+	<node pkg="rosservice" type="rosservice" name="OPCUAconnect" args="call --wait /opcua/opcua_client/connect 'opc.tcp://$(arg host)'"/>
+	
+
+    <node if="$(arg run_diag)" pkg="motor_controller" type="motor_controller_node.py" name="motor_controller_node" output="screen" >
+        
+		<param name="~vel_topic" value="$(arg vel_topic)"/>
+        <param name="~max_speed" value="$(arg max_speed)"/>
+        <param name="~min_speed" value="$(arg min_speed)"/>
+        <param name="~ticks_per_meter" value="$(arg ticks_per_meter)"/>
+        <param name="~base_width" value="$(arg base_width)"/>
+		<param name="opcua_namespace" value="$(arg namespace)"/>
+		<param name="opcua_node_name" value="$(arg node_name)"/>
+		
+		
+    </node>
+
+</launch>
