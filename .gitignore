@@ -132,3 +132,6 @@ dmypy.json
 ros_ws/install
 ros_ws/log
 ros_ws/build
+ros_ws/src/sick_safetyscanners2
+ros_ws/src/sick_safetyscanners2_interfaces
+ros_ws/src/sick_safetyscanners_base
